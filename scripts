@@ -1,0 +1,79 @@
+Select * from pessoas; 
+
+Select * from pessoas where altura > 1.70; 
+
+Select * from pessoas where altura between 1.60 and 1.80; 
+
+Select * from pessoas where nome_pessoa like ‘C%’; 
+
+Select count(*) from pessoas; 
+
+Select avg(altura) from pessoas; 
+
+Select nome,altura from pessoas where altura = max(altura); 
+
+Select nome,altura from pessoas where altura = min(altura); 
+
+Select * from pessoas where length(nome) = 10; 
+
+Select * from pessoas order by altura desc; 
+
+ 
+
+Update pessoas set nome = ‘Carlos E.’ where id = 3; 
+
+Update pessoas set altura = 1.79 where altura > 1.80; 
+
+Update pais set nome_pais = ‘Canadá (América do Norte).’ where id = 2; 
+
+Update pessoas set nome = concat(nome, ‘ dos Santos’) where ‘Ana Clara’ and ‘Daniela Moura’; 
+
+Update pets set pedigree = ‘Sem pedigree’ where pedigree is null; 
+
+Update pets set nome = Upper(nome) where nome = ‘B%’; 
+
+Update passaporte set cod_passaporte = ‘BR000001’ where id = 1; 
+
+ 
+
+Create or replace procedure aumentarAltura( 
+
+V_altura IN pessoa.altura%TYPE) as beggin  
+
+V_altura := V_altura + pessoas.altura 
+
+Update pessoas set altura = V_altura; 
+
+Commit; 
+
+End/;    
+
+Update passaporte set pais_id = 5 where pessoa_id = 4; 
+
+Update pets set pedigree = ‘Beagle Premium’ and nome = ‘Biduzinho’ where id = 7l; 
+
+  
+
+ 
+
+- delete pets where Upper(nome_pet) = ‘BOB’; 
+
+- delete pessoas where altura < 1.65; 
+
+- delete  paises like Upper(nome_pais) = ‘CA%’ 
+
+- delete pets where pessoa_id = 1; 
+
+- delete (select * from pessoas where altura > 1.80); 
+
+- delete pessoas where Upper(nome) = ‘Eduarda Lima’; 
+
+- delete pets like nome = ‘%a’ 
+
+- delete pets where pessoa_id is null; 
+
+   
+
+ 
+
+ 
