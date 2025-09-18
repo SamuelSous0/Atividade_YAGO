@@ -60,7 +60,7 @@ Update pets set pedigree = ‘Beagle Premium’ and nome = ‘Biduzinho’ where
 
 - delete pessoas where altura < 1.65; 
 
-- delete  paises like Upper(nome_pais) = ‘CA%’ 
+- delete  paises where nome_pais like Upper(nome_pais) = ‘CA%’ 
 
 - delete pets where pessoa_id = 1; 
 
@@ -68,11 +68,39 @@ Update pets set pedigree = ‘Beagle Premium’ and nome = ‘Biduzinho’ where
 
 - delete pessoas where Upper(nome) = ‘Eduarda Lima’; 
 
-- delete pets like nome = ‘%a’ 
+- delete pets where nome like nome ‘%a’ 
 
 - delete pets where pessoa_id is null; 
 
-   
+   -- CULPA DE ANDRESSA
+
+SELECT * FROM PASSAPORTE P INNER JOIN PAISES PA ON P.pais_id = PA.ID_PAIS
+
+SELECT * FROM PESSOAS P RIGTH JOIN PETS PT ON P.ID_PESSOA = PA.pessoa_id
+
+
+SELECT * FROM PESSOAS P INNER JOIN PETS PT ON P.ID_PESSOA = PA.pessoa_id
+
+SELECT * FROM PESSOAS P WHERE PESSOAS_ID IS NULL LEFT JOIN PETS PT ON P.ID_PESSOA = PA.pessoa_id
+
+SELECT PE.NOME_PET, PA.NOME_PAIS FROM PESSOAS P INNER JOIN  PETS PE ON PE.PESSOAS_ID = P.ID_PESSOA
+INNER JOIN PASSAPORTES PS ON P.PESSOA_ID = PS.PESSOA_ID INNER JOIN PAISES ON P.ID_PAISES = PS.PAIS_ID
+
+SELECT * FROM PASSAPORTE PS LEFT JOIN PAISES PA ON PS.PAIS_ID = PA.ID_PAIS
+ 
+SELECT P.NOME_PESSOA,COUNT(PT.ID_PETS) AS 'QUANTIDADE DE PETS' FROM PESSOAS P GROUP BY P.NOME_PESSOA PT. INNER JOIN PETS PT ON P.ID_PESSOA = PT.ID_PESSOA
+
+SELECT * FROM PESSOAS    
+INNER JOIN PASSAPORTE PA ON P.ID_PESSOAS = PA.PESSOAS_ID
+LEFT JOIN PETS PT ON P.ID_PESSOAS = PT.PESSOAS_ID
+
+ 
+SELECT P.NOME_PESSOA AS "DONO", PT.NOME_PET AS "NOME DO PET"
+FROM pessoas P
+INNER JOIN pets PT ON P.ID_PESSOA = PT.PESSOA_ID
+INNER JOIN passaportes PA ON P.ID_PESSOA = PA.PESSOA_ID;
+ 
+
 
  
 
